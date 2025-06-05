@@ -1,7 +1,7 @@
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from langchain_mcp_adapters.tools import load_mcp_tools
-from langchain.agents import create_tool_calling_agent
+from langgraph.prebuilt import create_react_agent
 from mcp_client.prompts import SYSTEM_PROMPT
 from langchain_groq import ChatGroq
 import asyncio
@@ -24,7 +24,7 @@ async def run_agent(prompt: str):
                 print(f"Loaded Tools: {[tool.name for tool in tools]}")
 
                 system_prompt = SYSTEM_PROMPT
-                agent = create_tool_calling_agent(model, tools, system_prompt)
+                agent = create_react_agent(model, tools)
                 print("Tool-Calling Agent Created.")
 
                 print(f"Prompt: {prompt}")
@@ -33,6 +33,7 @@ async def run_agent(prompt: str):
                 })
 
                 return response["messages"][-1].content
+            
     except Exception as e:
         print("Caught exception in agent:")
         import traceback
