@@ -24,7 +24,7 @@ async def run_agent(prompt: str):
                 print(f"Loaded Tools: {[tool.name for tool in tools]}")
 
                 system_prompt = SYSTEM_PROMPT
-                agent = create_react_agent(model, tools)
+                agent = create_react_agent(model, tools, prompt=SYSTEM_PROMPT)
                 print("Tool-Calling Agent Created.")
 
                 print(f"Prompt: {prompt}")
