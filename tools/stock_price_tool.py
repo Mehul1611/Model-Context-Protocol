@@ -41,16 +41,16 @@ def stock_resource(symbol: str) -> str:
     return f"The current price of '{symbol}' is ${price:.2f}."
 
 
-@mcp.resource("stock://{symbol}")
-def stock_resource(symbol: str) -> str:
-    """
-    Expose stock price data as a resource.
-    Returns a formatted string with the current stock price for the given symbol.
-    """
-    price = get_stock_price(symbol)
-    if price < 0:
-        return f"Error: Could not retrieve price for symbol '{symbol}'."
-    return f"The current price of '{symbol}' is ${price:.2f}."
+# @mcp.resource("stock://{symbol}")
+# def stock_resource(symbol: str) -> str:
+#     """
+#     Expose stock price data as a resource.
+#     Returns a formatted string with the current stock price for the given symbol.
+#     """
+#     price = get_stock_price(symbol)
+#     if price < 0:
+#         return f"Error: Could not retrieve price for symbol '{symbol}'."
+#     return f"The current price of '{symbol}' is ${price:.2f}."
 
 
 
